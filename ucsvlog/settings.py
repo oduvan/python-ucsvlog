@@ -1,0 +1,2 @@
+
+INIT_LINE_SYMBOL = u'",'
