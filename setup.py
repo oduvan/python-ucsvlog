@@ -3,11 +3,11 @@
 from distutils.core import setup
 
 setup(name='python-ucsvlog',
-      version='0.1.6',
+      version='0.2.1',
       description='logging in ucsv format',
       author='Alexander Lyabah',
       author_email='alexander@lyabah.com',
       packages=['ucsvlog','ucsvlog.fields'],
-      url='https://bitbucket.org/oduvan/python-ucsvlog',
+      url='https://github.com/oduvan/python-ucsvlog',
       package_dir={'ucsvlog': 'ucsvlog','ucsvlog.fields':'ucsvlog/fields'}
 )
