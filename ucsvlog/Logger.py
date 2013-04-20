@@ -124,7 +124,7 @@ class Logger(object):
 
         if func_fields is None:
             func_fields = ['stacksize', 'fname', 'filename', 'lineno']
-        self.aindex_stack = []
+        self._aindex_stack = []
 
         # generate write functions or empty function
         # depends on loglev and level input parameters
@@ -141,6 +141,14 @@ class Logger(object):
         self.def_log_call = getattr(self, default_level)
 
         self.func_fields = arr_lambda_by_name(func_fields, every)
+
+    def _get_aindex_stack(self):
+        return self.get_aindex_stack()
+
+    def get_aindex_stack(self):
+        return self._aindex_stack
+
+    aindex_stack = property(_get_aindex_stack)
 
     def __call__(self, data, stack=0):
         return self.def_log_call(data, stack + 1, stack_minus=3)
