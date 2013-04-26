@@ -1,12 +1,17 @@
 import sys
+
+import six
+
+
 def unicoder(line):
     try:
         try:
-            return unicode(line)
+            return six.text_type(line)
         except UnicodeDecodeError:
             return str(line).decode('utf-8')
-    except Exception,e:
+    except Exception as e:
         return u'*** EXCEPTION ***'+str(e)
+
 
 def import_name(line):
     line = line.split('.')
@@ -16,12 +21,13 @@ def import_name(line):
     else:
         __import__(mname)
         mname = sys.modules[mname]
-    return getattr(mname,line[-1])
+    return getattr(mname, line[-1])
 
-def arr_lambda_by_name(items,mod):
-    ret = []        
+
+def arr_lambda_by_name(items, mod):
+    ret = []
     for item in items:
-        if isinstance(item, (str,unicode)):
+        if isinstance(item, (str, six.text_type)):
             try:
                 item.index('.')
             except ValueError:
@@ -31,11 +37,14 @@ def arr_lambda_by_name(items,mod):
         ret.append(item)
     return ret
 
-def get_trio_log(logger,logname):
-    return getattr(logger,logname),getattr(logger,'a_'+logname),getattr(logger,'c_'+logname)
 
-def arr_funcs_call(items,*args,**kwargs):
+def get_trio_log(logger, logname):
+    return getattr(logger, logname), getattr(logger, 'a_'+logname), \
+        getattr(logger, 'c_'+logname)
+
+
+def arr_funcs_call(items, *args, **kwargs):
     ret = []
-    for item in items:# self.func_fields:
-        ret.append(item(*args,**kwargs))
+    for item in items:
+        ret.append(item(*args, **kwargs))
     return ret

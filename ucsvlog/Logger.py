@@ -9,6 +9,8 @@ from random import randint
 
 from ucsvlog.utils import unicoder, arr_lambda_by_name, arr_funcs_call
 
+import six
+
 
 class Logger(object):
     # log file template
@@ -159,7 +161,7 @@ class Logger(object):
         now = datetime.now()
         return {
             'year': now.year,
-            'syear': unicode(now.year)[2:],
+            'syear': six.text_type(now.year)[2:],
             'month': now.month,
             'day': now.day,
             'hour': now.hour,
