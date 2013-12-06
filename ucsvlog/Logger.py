@@ -274,7 +274,7 @@ class Logger(object):
 
     def gen_record_key(self):
         '''str key'''
-        return self.get_record_time() + ';' + str(randint(0, 100))
+        return self.get_record_time() + ';' + str(randint(0, 1000))
 
     def tlog(self, name, params, stack=1, stack_minus=0):
         '''
