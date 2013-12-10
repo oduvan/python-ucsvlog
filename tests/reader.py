@@ -107,12 +107,21 @@ class ReadsTests(unittest.TestCase):
     def test_one_by_one(self):
         r = UCSVReaderToPy('tests/log_files/001_simple_3_lines.ucsv')
         r_iter = r.all_records()
-        self.assertEqual(r_iter.next(),
-                         [u'2010-12-24T21:59:20.471290', u'', u'3', u'__call__', u'/home/oduvan/www/python-ucsvlog/UCSVLog.py', u'70', u'log', u'ho'])
-        self.assertEqual(r_iter.next(),
-                         [u'2010-12-24T21:59:20.472136', u'', u'3', u'__call__', u'/home/oduvan/www/python-ucsvlog/UCSVLog.py', u'70', u'log', u'hi'])
-        self.assertEqual(r_iter.next(),
-                         [u'2010-12-24T21:59:20.472486', u'', u'3', u'__call__', u'/home/oduvan/www/python-ucsvlog/UCSVLog.py', u'70', u'log', u'g', u'p'])
+        try: 
+            self.assertEqual(r_iter.__next__(),
+                             [u'2010-12-24T21:59:20.471290', u'', u'3', u'__call__', u'/home/oduvan/www/python-ucsvlog/UCSVLog.py', u'70', u'log', u'ho'])
+            self.assertEqual(r_iter.__next__(),
+                             [u'2010-12-24T21:59:20.472136', u'', u'3', u'__call__', u'/home/oduvan/www/python-ucsvlog/UCSVLog.py', u'70', u'log', u'hi'])
+            self.assertEqual(r_iter.__next__(),
+                             [u'2010-12-24T21:59:20.472486', u'', u'3', u'__call__', u'/home/oduvan/www/python-ucsvlog/UCSVLog.py', u'70', u'log', u'g', u'p'])
+        except AttributeError:
+            self.assertEqual(r_iter.next(),
+                             [u'2010-12-24T21:59:20.471290', u'', u'3', u'__call__', u'/home/oduvan/www/python-ucsvlog/UCSVLog.py', u'70', u'log', u'ho'])
+            self.assertEqual(r_iter.next(),
+                             [u'2010-12-24T21:59:20.472136', u'', u'3', u'__call__', u'/home/oduvan/www/python-ucsvlog/UCSVLog.py', u'70', u'log', u'hi'])
+            self.assertEqual(r_iter.next(),
+                             [u'2010-12-24T21:59:20.472486', u'', u'3', u'__call__', u'/home/oduvan/www/python-ucsvlog/UCSVLog.py', u'70', u'log', u'g', u'p'])
+
         
                             
     def test_multiline_record(self):

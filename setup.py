@@ -7,7 +7,8 @@ setup(name='python-ucsvlog',
       description='logging in ucsv format',
       author='Alexander Lyabah',
       author_email='alexander@lyabah.com',
-      packages=['ucsvlog','ucsvlog.fields'],
+      packages=['ucsvlog', 'ucsvlog.fields'],
+      requires=['six'],
       url='https://github.com/oduvan/python-ucsvlog',
-      package_dir={'ucsvlog': 'ucsvlog','ucsvlog.fields':'ucsvlog/fields'}
-)
+      package_dir={'ucsvlog': 'ucsvlog', 'ucsvlog.fields': 'ucsvlog/fields'}
+      )
