@@ -1,6 +1,6 @@
 import codecs
 
-READ_SIZE = 20000
+READ_SIZE = 60000
 NEW_LINE_MARK = '\n'
 NEW_CELL = '"'
 CELLS_DELIMITER = ','
